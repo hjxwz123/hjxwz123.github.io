@@ -9,7 +9,7 @@
     
     <title>
         
-            归档 |
+            2.主函数的设计 |
         
         HJ blog
     </title>
@@ -90,7 +90,7 @@
                     
                         
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 
@@ -132,7 +132,7 @@
             
                 
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives"
                     >归档</a>
                 </li>
@@ -159,50 +159,139 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="archives-container">
-        <div class="archives-timeline border-box">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
             
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2024</span>
-            </div>
-            <ul class="archive-item-body border-box">
+
+            <div class="post-content-bottom border-box">
                 
-                    <li class="post-item border-box">
-                        <span class="post-date border-box">04-02</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2024/04/02/2.%E4%B8%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%AE%BE%E8%AE%A1/"
-                        >2.主函数的设计</a>
-                    </li>
+                    <div class="post-title">
+                        2.主函数的设计
+                    </div>
                 
-                    <li class="post-item border-box">
-                        <span class="post-date border-box">03-29</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2024/03/29/Test-blog/"
-                        >Test blog</a>
-                    </li>
+
                 
-                    <li class="post-item border-box">
-                        <span class="post-date border-box">03-29</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2024/03/29/1.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E/"
-                        >1.数据结构说明</a>
-                    </li>
-                
-            </ul>
-        </section>
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">HJ</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-04-02 06:21:10</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Apr 02 2024 06:21:33 GMT+0000">2024-04-02 06:21:33</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
     
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="主函数的设计"><a href="#主函数的设计" class="headerlink" title="主函数的设计"></a>主函数的设计</h1><p>先贴上主函数的完整代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">	initgraph(WIN_WEIDTH, WIN_HEIGHT);</span><br><span class="line">	loadPicGroup();</span><br><span class="line">	logIn();</span><br><span class="line">	zombielist = creatZombielist();</span><br><span class="line">	peaslist = creatPeasList();</span><br><span class="line">	putPlant();</span><br><span class="line">	gameStart();</span><br><span class="line">	compearScore(credit);</span><br><span class="line">	closegraph();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中</p>
+<p>1. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">initgraph(WIN_WEIDTH, WIN_HEIGHT);</span><br><span class="line">closegraph();</span><br></pre></td></tr></table></figure>
+<p>两个函数为easyx库函数，initgraph目的是创建一个绘图窗口，这里WIN_WEIDTH, WIN_HEIGHT两个常亮分别为窗口的高度和宽度，在前面的文章有具体说明。closegraph()是关闭绘图窗口。<br>2. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadPicGroup();</span><br></pre></td></tr></table></figure>
+<p>为加载全局需要使用的图片资源。<br>3. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logIn();</span><br></pre></td></tr></table></figure>
+<p>此函数的功能是是绘制登录界面。<br>4. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zombielist = creatZombielist();</span><br><span class="line">peaslist = creatPeasList();</span><br><span class="line">putPlant();</span><br></pre></td></tr></table></figure>
+<p>以上三个函数分别为创建僵尸信息，创建豌豆信息，和放置植物。其中，zombielist和peaslist为结构体指针类型（zombielist不是链表但是也是指针类型是因为在游戏时需要修改僵尸数据，如血量，位置等，若不用指针类型会使得数据修改不便），putplant()函数是放置植物信息，将场景数据存入数组zb中，将植物信息依次存入newplant变量中。<br>5. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compearScore(credit);</span><br></pre></td></tr></table></figure>
+<p>这个函数是比较当前得分和历史最高得分，若当前得分大于历史得分，则将当前得分写入文件。</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/03/29/Test-blog/"
+                                   title="Test blog"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">Test blog</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
+
+        
     </div>
-    
-
-
-
 </div>
 
 
@@ -245,6 +334,24 @@
     </div>
 
     <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
     
 
     <!-- side tools -->
@@ -328,6 +435,20 @@
 
 
 <div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
     
 
     <!-- categories page -->
