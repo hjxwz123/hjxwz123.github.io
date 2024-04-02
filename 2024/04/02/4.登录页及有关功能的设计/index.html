@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="HJ">
+    
+    <title>
+        
+            4.登录页及有关功能的设计 |
+        
+        HJ blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hjxwz123.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"HJ blog","author":"HJ","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","about":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":"hjx123","weixin":null,"qq":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               HJ blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        4.登录页及有关功能的设计
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">HJ</span>
+                                
+                                    <span class="author-badge">Lv1</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-04-02 09:11:01</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Apr 02 2024 09:11:52 GMT+0000">2024-04-02 09:11:52</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="4-登录页的制作"><a href="#4-登录页的制作" class="headerlink" title="4.登录页的制作"></a>4.登录页的制作</h1><p>为了主函数的简洁，我将登录模块直接自定义为<code>lonIn</code>函数，再给出代码前，需要补充两个知识点：</p>
+<ul>
+<li>1.由于easyx本身库的限制，我们绘制在界面上的图片或者图形不可以删除，所以如果需要实现画面上某一组件的改变，需要重新绘制整个界面的所有内容。所以需要使用使用<code>while(1)</code>无限循环，检测某些状态并逐帧绘制图像，在符合某些条件时使用<code>break</code>跳出循环。</li>
+<li>2.使用<code>while(1)</code>逐帧绘图时，为了避免闪烁，需要用到在循环前使用<code>BeginBatchDraw()</code>函数用于开始批量绘图。执行后，任何绘图操作都将暂时不输出到绘图窗口上，直到执行 <code>FlushBatchDraw</code> 或 <code>EndBatchDraw</code> 才将之前的绘图输出。在循环内使用绘制完图片后使用<code>FlushBatchDraw()</code>函数用于执行未完成的绘制任务。跳出循环后使用<code>EndBatchDraw()</code>函数，结束批量绘制。具体实现原理可移步<a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73633088/article/details/128424368" >关于双缓冲消除闪屏的原理<i class="fas fa-external-link-alt"></i></a>查看，此处不过多赘述。<br>
+下面给出具体代码：
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">logIn</span><span class="params">()</span> &#123;</span><br><span class="line">	BeginBatchDraw();<span class="comment">//开始批量绘图</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">		ListNode* user = buildListFromFile();</span><br><span class="line">		drawLogin();</span><br><span class="line">		FlushBatchDraw();<span class="comment">//输出绘制的图片</span></span><br><span class="line">		<span class="keyword">if</span> (checkMessage(user) == <span class="number">10</span>) &#123;</span><br><span class="line">			<span class="built_in">free</span>(user);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	EndBatchDraw();<span class="comment">//结束批量绘图</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这段代码的目的是执行一个登录流程，其中包括从文件构建用户列表、绘制登录界面、检查用户信息并根据检查结果决定是否退出。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里是绘制登录界面，验证用户信息成功则退出循环，结束绘制。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ListNode* user = buildListFromFile();</span><br></pre></td></tr></table></figure>
+<p>这行代码调用 <code>buildListFromFile</code> 函数，该函数的作用是从文件中读取数据，并构建一个链表来存储这些数据，每个节点代表一个用户。函数返回一个指向链表头节点的指针，这个指针被存储在 <code>ListNode* user</code> 变量中。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawLogin();</span><br></pre></td></tr></table></figure>
+<p>这行代码调用 <code>drawLogin</code> 函数，该函数的作用是绘制登录界面。具体实现包括在屏幕上显示登录表单，按钮以及背景。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">if</span> (checkMessage(user) == <span class="number">10</span>) &#123;</span><br><span class="line"><span class="built_in">free</span>(user);				</span><br><span class="line">       <span class="keyword">break</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>这行代码调用 <code>checkMessage</code> 函数，传入先前构建的用户链表。检查用户输入的登录信息。如果 <code>checkMessage</code> 返回值为 <code>10</code>，则验证成功，释放链表，跳出循环。</p>
+<h2 id="4-1-读取用户数据"><a href="#4-1-读取用户数据" class="headerlink" title="4.1 读取用户数据"></a>4.1 读取用户数据</h2><p>在实现登录功能时，我们需要考虑用户信息的存储和读取。由于我们无法知道数据库中存储的用户数量，这时我们就需要用到链表，我们定义函数<code>buildListFromFile()</code>，这个函数就是从外部数据库文件读取用户信息到链表，并返回链表的头结点。</p>
+<h3 id="外部数据库文件的设计"><a href="#外部数据库文件的设计" class="headerlink" title="外部数据库文件的设计"></a>外部数据库文件的设计</h3><p>文件名为<code>test.txt</code>，格式为<code>username</code>:<code>password</code>，每行一条数据。<br>例如：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">user1:123</span><br><span class="line">user2:456</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h3 id="buildListFromFile-函数的设计"><a href="#buildListFromFile-函数的设计" class="headerlink" title="buildListFromFile()函数的设计"></a><code>buildListFromFile()</code>函数的设计</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">ListNode* <span class="title function_">buildListFromFile</span><span class="params">()</span> &#123;<span class="comment">//从文件读入用户信息到链表</span></span><br><span class="line">	FILE* file = fopen(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (file == <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ListNode* head = <span class="literal">NULL</span>;</span><br><span class="line">	ListNode* tail = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="type">char</span> line[<span class="number">100</span>];</span><br><span class="line">	<span class="keyword">while</span> (fgets(line, <span class="keyword">sizeof</span>(line), file)) &#123;</span><br><span class="line">		ListNode* newNode = (ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListNode));</span><br><span class="line">		<span class="type">char</span>* separator = <span class="built_in">strchr</span>(line, <span class="string">&#x27;:&#x27;</span>);</span><br><span class="line">		<span class="keyword">if</span> (separator) &#123;</span><br><span class="line">			*separator = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">			<span class="built_in">strcpy</span>(newNode-&gt;username, line);</span><br><span class="line">			<span class="built_in">strcpy</span>(newNode-&gt;password, separator + <span class="number">1</span>);</span><br><span class="line">			newNode-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">				head = newNode;</span><br><span class="line">				tail = newNode;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				tail-&gt;next = newNode;</span><br><span class="line">				tail = newNode;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">free</span>(newNode);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fclose(file);</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面给出函数解析：<br>1.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FILE* file = fopen(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (file == <span class="literal">NULL</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这行代码尝试以只读模式(<code>&quot;r&quot;</code>)打开名为 <code>&quot;test.txt&quot;</code> 的文件，并将文件指针赋值给 <code>file</code>。如果文件不存在或无法打开，函数返回 <code>NULL</code>。<br>2.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ListNode* head = <span class="literal">NULL</span>;</span><br><span class="line">ListNode* tail = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<p>这两行代码初始化链表的头指针 <code>head</code> 和尾指针 <code>tail</code> 为 <code>NULL</code>，表示开始时链表为空。<br>3.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> line[<span class="number">100</span>];</span><br><span class="line"><span class="keyword">while</span> (fgets(line, <span class="keyword">sizeof</span>(line), file)) &#123;</span><br></pre></td></tr></table></figure>
+<p>这里定义了一个字符数组 <code>line</code>，并使用 <code>fgets</code> 在文件中逐行读取内容，每次读取的最大长度不超过 <code>line</code> 数组的大小。<br>4.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ListNode* newNode = (ListNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListNode));</span><br></pre></td></tr></table></figure>
+<p>为每个用户信息创建一个新的链表节点，使用 <code>malloc</code> 分配足够的内存。<br>5.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   <span class="type">char</span>* separator = <span class="built_in">strchr</span>(line, <span class="string">&#x27;:&#x27;</span>);</span><br><span class="line">   <span class="keyword">if</span> (separator) &#123;</span><br><span class="line">       *separator = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">       <span class="built_in">strcpy</span>(newNode-&gt;username, line);</span><br><span class="line">       <span class="built_in">strcpy</span>(newNode-&gt;password, separator + <span class="number">1</span>);</span><br><span class="line">newNode-&gt;next = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<p>这段代码查找每行中的分隔符 <code>&#39;:&#39;</code>。如果找到，将其替换为字符串终止符 <code>&#39;\0&#39;</code>，以此将一行分割为用户名和密码两部分，并分别复制到新节点的 <code>username</code> 和 <code>password</code> 字段中。<br>6.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">          <span class="keyword">if</span> (head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">              head = newNode;</span><br><span class="line">              tail = newNode;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              tail-&gt;next = newNode;</span><br><span class="line">              tail = newNode;</span><br><span class="line">          &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="built_in">free</span>(newNode);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>如果链表为空，新节点既是头节点也是尾节点。否则，将新节点添加到链表末尾，并更新尾节点指针。如果行中没有找到分隔符，释放已分配的新节点内存。<br>6.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    fclose(file);</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关闭文件并返回链表的头指针。<br>注意：对于每次打开文件后，都应使用<code>fclose()</code>关闭文件，防止发生未知错误，这点以后将不再说明。</p>
+<h2 id="4-2-界面UI的绘制"><a href="#4-2-界面UI的绘制" class="headerlink" title="4.2 界面UI的绘制"></a>4.2 界面UI的绘制</h2><p>绘制界面UI时，我们需要绘制登录注册按钮，用户名和密码输入框以及背景登，由于此处较为简单，直接给出代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">drawLogin</span><span class="params">()</span> &#123;<span class="comment">//绘制登录用背景图案</span></span><br><span class="line">	loadimage(<span class="literal">NULL</span>, <span class="string">&quot;image/loadbk.jpg&quot;</span>);<span class="comment">//背景</span></span><br><span class="line">	putimagePNG(<span class="number">340</span>, <span class="number">400</span>, &amp;picgroup[<span class="number">4</span>]);<span class="comment">//登录按钮</span></span><br><span class="line">	PutL(<span class="number">390</span>, <span class="number">405</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, <span class="string">&quot;登录&quot;</span>);</span><br><span class="line">	putimagePNG(<span class="number">340</span>, <span class="number">450</span>, &amp;picgroup[<span class="number">4</span>]);<span class="comment">//退出按钮</span></span><br><span class="line">	PutL(<span class="number">390</span>, <span class="number">455</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, <span class="string">&quot;退出&quot;</span>);</span><br><span class="line">	putimagePNG(<span class="number">340</span>, <span class="number">500</span>, &amp;picgroup[<span class="number">4</span>]);<span class="comment">//注册按钮</span></span><br><span class="line">	PutL(<span class="number">390</span>, <span class="number">505</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, <span class="string">&quot;注册&quot;</span>);</span><br><span class="line">	setfillcolor(WHITE);<span class="comment">//设置填充颜色为白色</span></span><br><span class="line">	setlinecolor(BLACK);<span class="comment">//设置边框颜色为黑色</span></span><br><span class="line">	PutL(<span class="number">250</span>, <span class="number">250</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, <span class="string">&quot;用户名&quot;</span>);<span class="comment">//绘制文字</span></span><br><span class="line">	fillrectangle(<span class="number">340</span>, <span class="number">250</span>, <span class="number">540</span>, <span class="number">280</span>);<span class="comment">//绘制用户名输入框</span></span><br><span class="line">	PutL(<span class="number">250</span>, <span class="number">350</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, <span class="string">&quot;密码&quot;</span>);</span><br><span class="line">	fillrectangle(<span class="number">340</span>, <span class="number">350</span>, <span class="number">540</span>, <span class="number">380</span>);<span class="comment">//绘制密码输入框</span></span><br><span class="line">	PutL(<span class="number">345</span>, <span class="number">255</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, username);<span class="comment">//绘制输入的用户名信息</span></span><br><span class="line">	PutL(<span class="number">345</span>, <span class="number">355</span>, <span class="string">&quot;黑体&quot;</span>, <span class="number">24</span>, BLACK, password);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3-交互信息以及用户验证"><a href="#4-3-交互信息以及用户验证" class="headerlink" title="4.3 交互信息以及用户验证"></a>4.3 交互信息以及用户验证</h2><p>这个部分是登录模块中最为重要的部分。都由函数<code>checkMessage(user)</code>处理，其中user是从文件读取的用户数据构造的链表。这个函数返回一个整数，若<em><strong>返回10</strong></em>则登陆成功，退出登录界面，否则继续登录。<br>先给出这个函数的代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">checkMessage</span><span class="params">(ListNode* user)</span> &#123;</span><br><span class="line">	ExMessage msg;</span><br><span class="line">	<span class="keyword">if</span> (peekmessage(&amp;msg)) &#123;</span><br><span class="line">		<span class="keyword">if</span> (msg.message == WM_LBUTTONDOWN) &#123;</span><br><span class="line">			<span class="keyword">if</span> (msg.x &gt; <span class="number">340</span> &amp;&amp; msg.x &lt; <span class="number">540</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (msg.y &gt; <span class="number">250</span> &amp;&amp; msg.y &lt; <span class="number">280</span>) &#123;</span><br><span class="line">					type = <span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (msg.y &gt; <span class="number">350</span> &amp;&amp; msg.y &lt; <span class="number">380</span>) &#123;</span><br><span class="line">					type = <span class="number">2</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123; type = <span class="number">3</span>; &#125;</span><br><span class="line">			<span class="keyword">if</span> (msg.x &gt; <span class="number">340</span> &amp;&amp; msg.y &gt; <span class="number">400</span> &amp;&amp; msg.x &lt; <span class="number">499</span> &amp;&amp; msg.y &lt; <span class="number">433</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (checkUser(user, username, password)) &#123;</span><br><span class="line">					MessageBox(<span class="literal">NULL</span>, <span class="string">&quot;登陆成功&quot;</span>, <span class="string">&quot;提示&quot;</span>, MB_SYSTEMMODAL);</span><br><span class="line">					<span class="keyword">return</span> <span class="number">10</span>;<span class="comment">//成功返回10</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					MessageBox(<span class="literal">NULL</span>, <span class="string">&quot;登陆失败&quot;</span>, <span class="string">&quot;提示&quot;</span>, MB_SYSTEMMODAL);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (msg.x &gt;= <span class="number">340</span> &amp;&amp; msg.x &lt;= <span class="number">499</span> &amp;&amp; msg.y &gt;= <span class="number">455</span> &amp;&amp; msg.y &lt;= <span class="number">488</span>) &#123;</span><br><span class="line">				<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (msg.x &gt;= <span class="number">340</span> &amp;&amp; msg.x &lt;= <span class="number">499</span> &amp;&amp; msg.y &gt;= <span class="number">505</span> &amp;&amp; msg.y &lt;= <span class="number">543</span>) &#123;</span><br><span class="line">				<span class="keyword">if</span> (text_lengthuser &gt; <span class="number">0</span> &amp;&amp; text_lengthpass &gt; <span class="number">0</span>) &#123;</span><br><span class="line">					<span class="keyword">if</span> (registerUser(username, password, user) == <span class="number">1</span>) &#123;</span><br><span class="line">						MessageBox(<span class="literal">NULL</span>, <span class="string">&quot;注册成功&quot;</span>, <span class="string">&quot;提示&quot;</span>, MB_SYSTEMMODAL);</span><br><span class="line">					&#125;</span><br><span class="line">					<span class="keyword">else</span> &#123;</span><br><span class="line">						MessageBox(<span class="literal">NULL</span>, <span class="string">&quot;注册失败，\n可能是用户名重复或者发生系统错误&quot;</span>, <span class="string">&quot;提示&quot;</span>, MB_SYSTEMMODAL);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					MessageBox(<span class="literal">NULL</span>, <span class="string">&quot;注册失败，请输入信息&quot;</span>, <span class="string">&quot;提示&quot;</span>, MB_SYSTEMMODAL);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (msg.message == WM_CHAR) &#123;</span><br><span class="line">			<span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</span><br><span class="line">				handleInput(msg, username, &amp;text_lengthuser);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (type == <span class="number">2</span>) &#123;</span><br><span class="line">				handleInput(msg, password, &amp;text_lengthpass);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面我来详细讲解。</p>
+<h3 id="信息的输入"><a href="#信息的输入" class="headerlink" title="信息的输入"></a>信息的输入</h3><p>由于用户需要输入两个数据：用户名和密码，所以我们考虑建立两个变量来存储这些数据。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CHAR username[MAX_INPUT_LENGTH + <span class="number">1</span>] = <span class="string">&quot;&quot;</span>;	<span class="comment">//用户名输入信息</span></span><br><span class="line">CHAR password[MAX_INPUT_LENGTH + <span class="number">1</span>] = <span class="string">&quot;&quot;</span>;	<span class="comment">//密码输入的信息</span></span><br></pre></td></tr></table></figure>
+<p>并且为了实现不超过最大长度，我们还需要设计两个变量存储当前输入的长度：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> text_lengthuser = <span class="number">0</span>;			<span class="comment">//当前用户名长度</span></span><br><span class="line"><span class="type">int</span> text_lengthpass = <span class="number">0</span>;			<span class="comment">//当前密码长度</span></span><br></pre></td></tr></table></figure>
+<h4 id="判断输入框"><a href="#判断输入框" class="headerlink" title="判断输入框"></a>判断输入框</h4><p>由于easyx库的限制，我们不能使用Windows的gui来实现文字输入，这时就要考虑其他的办法实现文字输入，具体输入方式是：<br>获取键盘输入内容-&gt;将键盘内容追加到字符串数组-&gt;若是按退格键移除数组最后一个内容-&gt;在每个循环中输出字符串内容<br>除此之外，我们有两个输入框，一个是用户名，一个是密码，我们需要实现在点击用户名框时输入的内容显示到用户名框，点击密码框时输入的内容显示到密码框。如何实现这一功能呢？<br>我们可以考虑声明一个全局变量<code>type</code>，若点击了用户名框则将值赋为1，点击了密码框将值赋为2，若点击其他区域将值赋为3.<br>下面来看具体实现方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg.message == WM_LBUTTONDOWN) &#123;若是鼠标消息为点击左键</span><br><span class="line">	<span class="keyword">if</span> (msg.x &gt; <span class="number">340</span> &amp;&amp; msg.x &lt; <span class="number">540</span>) &#123;<span class="comment">//点击了用户名输入框</span></span><br><span class="line">		<span class="keyword">if</span> (msg.y &gt; <span class="number">250</span> &amp;&amp; msg.y &lt; <span class="number">280</span>) &#123;</span><br><span class="line">			type = <span class="number">1</span>;<span class="comment">//1是输入用户名</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (msg.y &gt; <span class="number">350</span> &amp;&amp; msg.y &lt; <span class="number">380</span>) &#123;<span class="comment">//点击了密码输入框</span></span><br><span class="line">			type = <span class="number">2</span>;</span><br><span class="line">		&#125;<span class="comment">//2是密码</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123; type = <span class="number">3</span>; &#125;<span class="comment">//点击了其他区域</span></span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h4 id="实时显示输入内容"><a href="#实时显示输入内容" class="headerlink" title="实时显示输入内容"></a>实时显示输入内容</h4><p>对于该功能，我们想要实现实时显示用户输入的内容（用户名或者密码）到屏幕（在上面的<code>drawLogin()</code>函数中实时绘制输入的信息），并且当按下退格后删除最后一个字符，而且不能超出最大长度。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg.message == WM_CHAR) &#123;<span class="comment">//如果是字符消息</span></span><br><span class="line">	<span class="keyword">if</span> (type == <span class="number">1</span>) &#123;</span><br><span class="line">		handleInput(msg, username, &amp;text_lengthuser);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (type == <span class="number">2</span>) &#123;</span><br><span class="line">		handleInput(msg, password, &amp;text_lengthpass);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码很容易理解，如果用户键盘按下字符且点击的位置是用户名（密码）框，则使用自定义函数<code>handleInput</code>在用户名（密码）变量中更新内容。<br><code>handleInput</code>的作用是处理在输入用户名和密码的场景中的用户输入。它可以添加字符到输入字符串中，或者处理删除（退格）操作。这个函数依赖于用户按键事件的信息，以及当前输入字符串的状态。<br>下面是内容处理函数<code>handleInput</code>的设计：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">handleInput</span><span class="params">(ExMessage msg, <span class="type">char</span>* input, <span class="type">int</span>* length)</span> &#123;<span class="comment">//处理输入用户名密码</span></span><br><span class="line">	<span class="type">char</span> c = msg.ch;</span><br><span class="line">	<span class="keyword">if</span> (c == <span class="string">&#x27;\b&#x27;</span> &amp;&amp; *length &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		input[--(*length)] = <span class="string">&#x27;\0&#x27;</span>; <span class="comment">// 移除最后一个字符</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (c != <span class="string">&#x27;\r&#x27;</span> &amp;&amp; c != <span class="string">&#x27;\b&#x27;</span>) <span class="comment">// 忽略回车键，并且如果不是退格键则添加字符</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*length &lt; MAX_INPUT_LENGTH)</span><br><span class="line">		&#123;</span><br><span class="line">			input[(*length)++] = c;</span><br><span class="line">			input[*length] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它接受三个参数：</p>
+<ul>
+<li><code>ExMessage msg</code>：消息变量。</li>
+<li><code>char* input</code>：一个字符数组的指针，存储当前已经输入的文本。</li>
+<li><code>int* length</code>：一个指向整数的指针，表示当前 <code>input</code> 字符串的长度。</li>
+</ul>
+<p>代码首先从 <code>msg</code> 中取出用户按下的字符，并将其存储在局部变量 <code>c</code> 中。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (c == <span class="string">&#x27;\b&#x27;</span> &amp;&amp; *length &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">    input[--(*length)] = <span class="string">&#x27;\0&#x27;</span>; <span class="comment">// 移除最后一个字符</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果用户按下了退格键（ASCII码为 <code>\b</code>），并且 <code>input</code> 字符串长度大于0，则减少 <code>length</code> 的值，并在新的字符串末尾加上空字符（即移除了最后一个字符）。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (c != <span class="string">&#x27;\r&#x27;</span> &amp;&amp; c != <span class="string">&#x27;\b&#x27;</span>) </span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (*length &lt; MAX_INPUT_LENGTH)</span><br><span class="line">    &#123;</span><br><span class="line">        input[(*length)++] = c;</span><br><span class="line">        input[*length] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果按下的键既不是回车（<code>\r</code>）也不是退格（<code>\b</code>），则尝试将字符添加到 <code>input</code> 中。首先检查当前长度是否小于允许的最大长度 <code>MAX_INPUT_LENGTH</code>（这个值在代码中没有给出，但可以假设它是一个定义了的常量），如果是，则将字符 <code>c</code> 添加到当前长度的位置，随后增加 <code>length</code> 的值，并在新的末尾加上空字符。</p>
+<h3 id="判断点击了哪个按钮"><a href="#判断点击了哪个按钮" class="headerlink" title="判断点击了哪个按钮"></a>判断点击了哪个按钮</h3><p>这里的内容很简单，直接给出代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (msg.x &gt; <span class="number">340</span> &amp;&amp; msg.y &gt; <span class="number">400</span> &amp;&amp; msg.x &lt; <span class="number">499</span> &amp;&amp; msg.y &lt; <span class="number">433</span>) &#123;<span class="comment">//点击了登录按钮</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (msg.x &gt;= <span class="number">340</span> &amp;&amp; msg.x &lt;= <span class="number">499</span> &amp;&amp; msg.y &gt;= <span class="number">455</span> &amp;&amp; msg.y &lt;= <span class="number">488</span>) &#123;<span class="comment">//点击了退出按钮</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (msg.x &gt;= <span class="number">340</span> &amp;&amp; msg.x &lt;= <span class="number">499</span> &amp;&amp; msg.y &gt;= <span class="number">505</span> &amp;&amp; msg.y &lt;= <span class="number">543</span>) &#123;<span class="comment">//点击了注册按钮</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="登录信息的验证"><a href="#登录信息的验证" class="headerlink" title="登录信息的验证"></a>登录信息的验证</h3><p>这个很简单，即比对用户名和密码变量的信息与我们构建好的用户信息链表是否符合。但是需要注意的是，在读取文件到链表时，非最后一行密码后会有换行符，最后一行没有。当比对时需要考虑此问题。<br>以下是验证函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">checkUser</span><span class="params">(ListNode* head, <span class="type">char</span> username[], <span class="type">char</span> password[])</span> &#123;<span class="comment">//验证登录信息</span></span><br><span class="line">	ListNode* temp = head;</span><br><span class="line">	<span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> ((<span class="built_in">strcmp</span>(temp-&gt;username, username) == <span class="number">0</span>) &amp;&amp; ((<span class="built_in">strcmp</span>(temp-&gt;password, password) == <span class="number">0</span>) || (<span class="built_in">strcmp</span>(temp-&gt;password, <span class="built_in">strcat</span>(password, <span class="string">&quot;\n&quot;</span>)) == <span class="number">0</span>))) &#123;</span><br><span class="line">			<span class="comment">//用户名相等并且密码等于读取到的密码或者读取到的密码加上换行符</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该函数，如果验证成功返回1，否则返回0.</p>
+<h3 id="注册功能的实现"><a href="#注册功能的实现" class="headerlink" title="注册功能的实现"></a>注册功能的实现</h3><p>在这里我们需要实现如下功能：</p>
+<ul>
+<li>注册用户：将注册信息写入数据文件</li>
+<li>比对重复：若用户名存在则不注册并给出提示<br>这个部分也没什么难的，给上代码<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">registerUser</span><span class="params">(<span class="type">char</span> username[], <span class="type">char</span> password[], ListNode* head)</span> &#123;<span class="comment">//注册用户</span></span><br><span class="line">	ListNode* temp = head;</span><br><span class="line">	<span class="comment">// 检查用户名是否已经存在</span></span><br><span class="line">	<span class="keyword">while</span> (temp != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">strcmp</span>(temp-&gt;username, username) == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// 用户名已存在，注册失败</span></span><br><span class="line">		&#125;</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 将新用户的信息写入文件</span></span><br><span class="line">	FILE* file = fopen(<span class="string">&quot;test.txt&quot;</span>, <span class="string">&quot;a&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (file != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(file, <span class="string">&quot;%s:%s\n&quot;</span>, username, password);</span><br><span class="line">		fclose(file);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// 文件打开失败，注册失败</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+如果注册失败返回0，成功返回1.</li>
+</ul>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/04/02/3.%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD/"
+                                   title="3.图片资源的加载"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">3.图片资源的加载</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">HJ</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>
