@@ -1,82 +1,82 @@
-/* global KEEP */
+/* main function */
+import initUtils from "./utils.js";
+import initTyped from "./plugins/typed.js";
+import initModeToggle from "./tools/lightDarkSwitch.js";
+import initLazyLoad from "./layouts/lazyload.js";
+import initScrollTopBottom from "./tools/scrollTopBottom.js";
+import initLocalSearch from "./tools/localSearch.js";
+import initCopyCode from "./tools/codeBlock.js";
 
-window.addEventListener('DOMContentLoaded', () => {
-  const { version, local_search, lazyload } = KEEP.theme_config
-
-  KEEP.themeInfo = {
-    theme: `Keep v${version}`,
-    author: 'XPoet',
-    repository: 'https://github.com/XPoet/hexo-theme-keep',
-    localStorageKey: 'KEEP-THEME-STATUS',
-    styleStatus: {
-      isDark: false,
-      fontSizeLevel: 0,
-      isShowToc: true
-    }
-  }
-
-  // print theme base info
-  KEEP.printThemeInfo = () => {
+export const main = {
+  themeInfo: {
+    theme: `Redefine v${theme.version}`,
+    author: "EvanNotFound",
+    repository: "https://github.com/EvanNotFound/hexo-theme-redefine",
+  },
+  localStorageKey: "REDEFINE-THEME-STATUS",
+  styleStatus: {
+    isExpandPageWidth: false,
+    isDark: theme.colors.default_mode && theme.colors.default_mode === "dark",
+    fontSizeLevel: 0,
+    isOpenPageAside: true,
+  },
+  printThemeInfo: () => {
     console.log(
-      `\n %c ${KEEP.themeInfo.theme} %c ${KEEP.themeInfo.repository} \n`,
-      `color: #fadfa3; background: #333; padding: 6px 0;`,
-      `padding: 6px 0;`
-    )
-  }
-  KEEP.printThemeInfo()
-
-  // set version number of footer
-  KEEP.setFooterVersion = () => {
-    const vd = document.querySelector('.footer .keep-version')
-    vd && (vd.innerHTML = KEEP.themeInfo.theme)
-    const vd2 = document.querySelector('.footer .shields-keep-version')
-    vd2 && (vd2.src = vd2.src.replace('Keep', KEEP.themeInfo.theme))
-  }
-
-  // set styleStatus to localStorage
-  KEEP.setStyleStatus = () => {
-    localStorage.setItem(KEEP.themeInfo.localStorageKey, JSON.stringify(KEEP.themeInfo.styleStatus))
-  }
-
-  // get styleStatus from localStorage
-  KEEP.getStyleStatus = () => {
-    let temp = localStorage.getItem(KEEP.themeInfo.localStorageKey)
+      `      ______ __  __  ______  __    __  ______                       \r\n     \/\\__  _\/\\ \\_\\ \\\/\\  ___\\\/\\ \"-.\/  \\\/\\  ___\\                      \r\n     \\\/_\/\\ \\\\ \\  __ \\ \\  __\\\\ \\ \\-.\/\\ \\ \\  __\\                      \r\n        \\ \\_\\\\ \\_\\ \\_\\ \\_____\\ \\_\\ \\ \\_\\ \\_____\\                    \r\n         \\\/_\/ \\\/_\/\\\/_\/\\\/_____\/\\\/_\/  \\\/_\/\\\/_____\/                    \r\n                                                               \r\n ______  ______  _____   ______  ______ __  __   __  ______    \r\n\/\\  == \\\/\\  ___\\\/\\  __-.\/\\  ___\\\/\\  ___\/\\ \\\/\\ \"-.\\ \\\/\\  ___\\   \r\n\\ \\  __<\\ \\  __\\\\ \\ \\\/\\ \\ \\  __\\\\ \\  __\\ \\ \\ \\ \\-.  \\ \\  __\\   \r\n \\ \\_\\ \\_\\ \\_____\\ \\____-\\ \\_____\\ \\_\\  \\ \\_\\ \\_\\\\\"\\_\\ \\_____\\ \r\n  \\\/_\/ \/_\/\\\/_____\/\\\/____\/ \\\/_____\/\\\/_\/   \\\/_\/\\\/_\/ \\\/_\/\\\/_____\/\r\n                                                               \r\n  Github: https:\/\/github.com\/EvanNotFound\/hexo-theme-redefine`,
+    ); // console log message
+  },
+  setStyleStatus: () => {
+    localStorage.setItem(
+      main.localStorageKey,
+      JSON.stringify(main.styleStatus),
+    );
+  },
+  getStyleStatus: () => {
+    let temp = localStorage.getItem(main.localStorageKey);
     if (temp) {
-      temp = JSON.parse(temp)
-      for (let key in KEEP.themeInfo.styleStatus) {
-        KEEP.themeInfo.styleStatus[key] = temp[key]
+      temp = JSON.parse(temp);
+      for (let key in main.styleStatus) {
+        main.styleStatus[key] = temp[key];
       }
-      return temp
+      return temp;
     } else {
-      return null
+      return null;
     }
-  }
-
-  // init prototype function
-  KEEP.initPrototype = () => {
-    HTMLElement.prototype.wrap = function (wrapper) {
-      this.parentNode.insertBefore(wrapper, this)
-      this.parentNode.removeChild(this)
-      wrapper.appendChild(this)
-    }
-  }
-  KEEP.initPrototype()
-
-  KEEP.initExecute = () => {
-    KEEP.initUtils()
-    KEEP.initHeaderShrink()
-    KEEP.initModeToggle()
-    KEEP.initBack2Top()
-    KEEP.initCodeBlock()
-    KEEP.setFooterVersion()
-
-    if (local_search?.enable === true) {
-      KEEP.initLocalSearch()
+  },
+  refresh: () => {
+    initUtils();
+    initModeToggle();
+    initScrollTopBottom();
+    if (
+      theme.home_banner.subtitle.text.length !== 0 &&
+      location.pathname === config.root
+    ) {
+      initTyped("subtitle");
     }
 
-    if (lazyload?.enable === true) {
-      KEEP.initLazyLoad()
+    if (theme.navbar.search.enable === true) {
+      initLocalSearch();
     }
-  }
-  KEEP.initExecute()
-})
+
+    if (theme.articles.code_block.copy === true) {
+      initCopyCode();
+    }
+
+    if (theme.articles.lazyload === true) {
+      initLazyLoad();
+    }
+  },
+};
+
+export function initMain() {
+  main.printThemeInfo();
+  main.refresh();
+}
+
+document.addEventListener("DOMContentLoaded", initMain);
+
+try {
+  swup.hooks.on("page:view", () => {
+    main.refresh();
+  });
+} catch (e) {}
