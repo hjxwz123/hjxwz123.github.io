@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="豌豆绘制以及发射、撞击的判定">
+    <meta name="author" content="HJ">
+    
+    <title>
+        
+            8.豌豆绘制以及发射、撞击的判定 |
+        
+        HJ blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+        <link rel="shortcut icon" href="/images/logo.svg">
+    
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"hjxwz123.github.io","root":"/","language":"zh-CN"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#0066cc","title":"HJ blog","author":"HJ","avatar":"/images/avatar.svg","logo":"/images/logo.svg","favicon":"/images/logo.svg"},"menu":{"home":"/","archives":"/archives","about":"/about"},"first_screen":{"enable":false,"background_img":"/images/bg.svg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":false,"links":{"github":"hjx123","weixin":null,"qq":null,"email":null}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":false,"tag":false,"post_datetime":"updated"},"post":{"author_badge":{"enable":true,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":false,"min2read":false},"datetime_format":"YYYY-MM-DD HH:mm:ss","copyright_info":false,"share":false,"reward":{"enable":false,"img_link":null,"text":null}},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"toc":{"enable":false,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":false,"site_uv":false,"site_pv":false,"page_pv":false}},"local_search":{"enable":false,"preload":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.21"},"waline":{"server_url":null,"reaction":false,"version":2},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":false},"cdn":{"enable":false,"provider":"cdnjs"},"pjax":{"enable":false},"footer":{"since":2020,"word_count":false,"icp":{"enable":false,"record_code":null,"url":"https://beian.miit.gov.cn"},"site_deploy":{"enable":false,"provider":"github","url":null},"shields_style":{"enable":false,"custom":[{"link_url":null,"img_url":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.1.0"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
+  </script>
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+
+<main class="page-container border-box">
+    <!-- home first screen  -->
+    
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/logo.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               HJ blog
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                
+                                首页
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                
+                                归档
+                            </a>
+                        </li>
+                    
+                        
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/"
+                    >首页</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives"
+                    >归档</a>
+                </li>
+            
+                
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about"
+                    >关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        8.豌豆绘制以及发射、撞击的判定
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">HJ</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-04-09 06:35:09</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Apr 09 2024 07:20:02 GMT+0000">2024-04-09 07:20:02</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="8-豌豆绘制以及发射、撞击的判定"><a href="#8-豌豆绘制以及发射、撞击的判定" class="headerlink" title="8.豌豆绘制以及发射、撞击的判定"></a>8.豌豆绘制以及发射、撞击的判定</h1><h2 id="豌豆发射的判定"><a href="#豌豆发射的判定" class="headerlink" title="豌豆发射的判定"></a>豌豆发射的判定</h2><p>首先是豌豆发射的判定，这个的方法有很多，这里介绍我的方法。<br>首先遍历场上所有植物，如果当前植物是豌豆射手且僵尸在当前行且僵尸位于豌豆射手前面则发射豌豆。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">toShoot</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">5</span>; j++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (zb[i][j] == <span class="number">2</span> &amp;&amp; zombielist-&gt;gy==j+<span class="number">1</span> &amp;&amp;  zombielist-&gt;gx &gt; i) &#123;</span><br><span class="line">				insertPea(peaslist, Pea_offset + cur_Width * i, Pea_offset + cur_Height * j, i + <span class="number">1</span>, j + <span class="number">1</span>);<span class="comment">//插入新节点</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意这里的i和j都是从0开始的，所以说加1才是行列数。<br>插入豌豆节点的函数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">insertPea</span><span class="params">(peas* head, <span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> gx, <span class="type">int</span> gy)</span> &#123;</span><br><span class="line">	peas* nowpea = (peas*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(peas));</span><br><span class="line">	nowpea-&gt;x = x;</span><br><span class="line">	nowpea-&gt;y = y;</span><br><span class="line">	nowpea-&gt;gx = gx;</span><br><span class="line">	nowpea-&gt;gy = gy;</span><br><span class="line">	nowpea-&gt;status = <span class="number">1</span>;</span><br><span class="line">	nowpea-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">if</span> (head-&gt;status == <span class="number">-100</span>) &#123;<span class="comment">//判断是否为链表第一个</span></span><br><span class="line">		head-&gt;x = x;</span><br><span class="line">		head-&gt;y = y;</span><br><span class="line">		head-&gt;gx = gx;</span><br><span class="line">		head-&gt;gy = gy;</span><br><span class="line">		head-&gt;status = <span class="number">1</span>;</span><br><span class="line">		head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		peas* temp = head;</span><br><span class="line">		<span class="keyword">while</span> (temp-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">			temp = temp-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		temp-&gt;next = nowpea;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为在前面创建豌豆链表时我们说过，status为-100表示为头节点并且无数据，所以这里判断若是头节点且无数据则插入数据到头节点。</p>
+<h2 id="豌豆撞击的判定"><a href="#豌豆撞击的判定" class="headerlink" title="豌豆撞击的判定"></a>豌豆撞击的判定</h2><p>在这里，我们需要遍历所有豌豆</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">peaHitZombie</span><span class="params">()</span> &#123;<span class="comment">//检查豌豆击中僵尸</span></span><br><span class="line">	<span class="comment">// 遍历所有豌豆</span></span><br><span class="line">	<span class="keyword">for</span> (peas* pea = peaslist; pea != <span class="literal">NULL</span> &amp;&amp; pea-&gt;status !=<span class="number">-100</span>; pea = pea-&gt;next) &#123;</span><br><span class="line">		<span class="keyword">if</span> (pea-&gt;x &gt;= zombielist-&gt;x + zombiepngedge+<span class="number">30</span> &amp;&amp; pea-&gt;x &lt;= zombielist-&gt;x+ zombiepngedge+ zombiewidth &amp;&amp; pea-&gt;gy == zombielist-&gt;gy &amp;&amp; zombielist-&gt;hp &gt; <span class="number">0</span> &amp;&amp; pea-&gt;status == <span class="number">1</span> ) &#123;</span><br><span class="line">			pea-&gt;status = <span class="number">0</span>; <span class="comment">// 修改豌豆的状态,0为消失</span></span><br><span class="line">			putimagePNG(pea-&gt;x, pea-&gt;y, &amp;picgroup[<span class="number">7</span>]);</span><br><span class="line">			zombielist-&gt;hp -= peashooterattack; <span class="comment">// 减少僵尸的血量</span></span><br><span class="line">			credit -= <span class="number">5</span>;<span class="comment">//大战植物模式，打中僵尸积分减5</span></span><br><span class="line">			<span class="keyword">break</span>; <span class="comment">// 一个豌豆在一次循环中只能击中一个僵尸，因此击中后跳出内层循环</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (pea-&gt;x &gt; <span class="number">810</span> || pea-&gt;x &lt; <span class="number">-10</span>) &#123;</span><br><span class="line">			pea-&gt;status = <span class="number">0</span>;<span class="comment">//豌豆超出场景将状态设为0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里遍历豌豆链表所有节点，若豌豆的位置与僵尸位置相等，则产生碰撞，将豌豆的状态设置为0，并绘制豌豆爆炸的图片，僵尸减少相应血量，减少积分。此时<code>break</code>跳出循环，因为一个豌豆只能击中一个僵尸。<br>（这里的<br><code>pea-&gt;x &gt;= headZombie-&gt;x + zombiepngedge+30 &amp;&amp; pea-&gt;x &lt;= headZombie-&gt;x+ zombiepngedge+ zombiewidth</code><br>表示判断豌豆是否在僵尸位置的一定范围内）<br>另外，若豌豆没有击中僵尸（玩家操纵僵尸躲避了豌豆），那么在豌豆超出场景也将豌豆状态设置为0。</p>
+<h2 id="豌豆的绘制"><a href="#豌豆的绘制" class="headerlink" title="豌豆的绘制"></a>豌豆的绘制</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">drawPeas</span><span class="params">()</span> &#123;</span><br><span class="line">	peas* temp = peaslist;</span><br><span class="line">	<span class="keyword">while</span> (temp != <span class="literal">NULL</span> &amp;&amp; temp-&gt;status != <span class="number">-100</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (temp-&gt;status == <span class="number">1</span>) &#123;</span><br><span class="line">			putimagePNG(temp-&gt;x, temp-&gt;y, &amp;picgroup[<span class="number">6</span>]);</span><br><span class="line">			temp-&gt;x = temp-&gt;x + <span class="number">10</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>非常简单，遍历豌豆链表，如果豌豆状态为1则绘制豌豆，并改变豌豆坐标，实现豌豆的移动。</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/04/09/9.%E5%83%B5%E5%B0%B8%E4%BD%8D%E7%BD%AE%E7%9A%84%E6%94%B9%E5%8F%98%E5%92%8C%E5%90%83%E6%A4%8D%E7%89%A9%E7%9A%84%E5%88%A4%E5%AE%9A/"
+                                   title="9.僵尸位置的改变和吃植物的判定"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">9.僵尸位置的改变和吃植物的判定</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/04/09/7.%E6%A4%8D%E7%89%A9%E4%B8%8E%E5%83%B5%E5%B0%B8%E7%9A%84%E5%8A%A8%E7%94%BB%E5%8F%8A%E7%BB%98%E5%88%B6/"
+                                   title="7.植物与僵尸的动画及绘制"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">7.植物与僵尸的动画及绘制</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="border-box website-info-box default">
+        
+            <div class="copyright-info info-item default">
+                &copy;&nbsp;<span>2020</span>&nbsp;-&nbsp;2024
+                
+                    &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">HJ</a>
+                
+            </div>
+
+            <div class="theme-info info-item default">
+                由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+            </div>
+
+            
+
+            
+        
+
+        <div class="count-item info-item default">
+            
+
+            
+
+            
+        </div>
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-toggle-theme-mode flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+
+    <!-- tablet toc -->
+    
+</main>
+
+
+
+<!-- common -->
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/toggle-theme.js"></script>
+
+<script src="/js/code-block.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+
+<!-- local-search -->
+
+
+<!-- lazyload -->
+
+
+<div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+
+
+</body>
+</html>

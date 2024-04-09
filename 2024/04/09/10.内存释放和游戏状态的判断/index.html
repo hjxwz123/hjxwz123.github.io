@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="主函数的设计">
+    <meta name="description" content="内存释放">
     <meta name="author" content="HJ">
     
     <title>
         
-            2.主函数的设计 |
+            10.内存释放和游戏状态的判断 |
         
         HJ blog
     </title>
@@ -168,7 +168,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        2.主函数的设计
+                        10.内存释放和游戏状态的判断
                     </div>
                 
 
@@ -183,7 +183,7 @@
                             <div class="author border-box">
                                 <span class="name">HJ</span>
                                 
-                                    <span class="author-badge">Lv1</span>
+                                    <span class="author-badge">Lv2</span>
                                 
                             </div>
                             <div class="meta-info border-box">
@@ -196,12 +196,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-04-02 06:21:10</span>
+                <span class="datetime">2024-04-09 07:25:17</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Apr 02 2024 11:59:48 GMT+0000">2024-04-02 11:59:48</span>
+                <span class="datetime" data-updated="Tue Apr 09 2024 08:12:06 GMT+0000">2024-04-09 08:12:06</span>
             </span>
         
 
@@ -226,20 +226,11 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="主函数的设计"><a href="#主函数的设计" class="headerlink" title="主函数的设计"></a>主函数的设计</h1><p>先贴上主函数的完整代码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;</span><br><span class="line">	initgraph(WIN_WEIDTH, WIN_HEIGHT);</span><br><span class="line">	loadPicGroup();</span><br><span class="line">	logIn();</span><br><span class="line">	zombielist = creatZombielist();</span><br><span class="line">	peaslist = creatPeasList();</span><br><span class="line">	putPlant();</span><br><span class="line">	gameStart();</span><br><span class="line">	compearScore(credit);</span><br><span class="line">	closegraph();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中</p>
-<p>1. </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">initgraph(WIN_WEIDTH, WIN_HEIGHT);</span><br><span class="line">closegraph();</span><br></pre></td></tr></table></figure>
-<p>两个函数为easyx库函数，initgraph目的是创建一个绘图窗口，这里WIN_WEIDTH, WIN_HEIGHT两个常亮分别为窗口的高度和宽度，在前面的文章有具体说明。closegraph()是关闭绘图窗口。<br>2. </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadPicGroup();</span><br></pre></td></tr></table></figure>
-<p>为加载全局需要使用的图片资源。<br>3. </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logIn();</span><br></pre></td></tr></table></figure>
-<p>此函数的功能是是绘制登录界面。<br>4. </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zombielist = creatZombielist();</span><br><span class="line">peaslist = creatPeasList();</span><br><span class="line">putPlant();</span><br></pre></td></tr></table></figure>
-<p>以上三个函数分别为创建僵尸信息，创建豌豆信息，和放置植物。其中，zombielist和peaslist为结构体指针类型（zombielist不是链表但是也是指针类型是因为在游戏时需要修改僵尸数据，如血量，位置等，若不用指针类型会使得数据修改不便），putplant()函数是放置植物信息，将场景数据存入数组zb中，将植物信息依次存入newplant变量中。<br>5. </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compearScore(credit);</span><br></pre></td></tr></table></figure>
-<p>这个函数是比较当前得分和历史最高得分，若当前得分大于历史得分，则将当前得分写入文件。</p>
+                    <h1 id="10-内存释放和游戏状态的判断"><a href="#10-内存释放和游戏状态的判断" class="headerlink" title="10.内存释放和游戏状态的判断"></a>10.内存释放和游戏状态的判断</h1><h2 id="内存释放"><a href="#内存释放" class="headerlink" title="内存释放"></a>内存释放</h2><p>因为豌豆是链表，所以我们需要及时释放内存，避免过高内存占用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">deletePeaAfterNode</span><span class="params">(peas* head)</span> &#123;<span class="comment">//删除已经消失的豌豆节点</span></span><br><span class="line">	<span class="comment">// 检查链表是否至少有两个节点</span></span><br><span class="line">	<span class="keyword">if</span> (head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">	peas* current = head-&gt;next; <span class="comment">// 从第二个节点开始</span></span><br><span class="line">	peas* prev = head; <span class="comment">// 头节点作为起始的前一个节点</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (current-&gt;status == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="comment">// 删除</span></span><br><span class="line">			prev-&gt;next = current-&gt;next;</span><br><span class="line">			<span class="built_in">free</span>(current);</span><br><span class="line">			current = prev-&gt;next; <span class="comment">// 继续向后遍历</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			prev = current;</span><br><span class="line">			current = current-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;<span class="comment">//删除豌豆节点释放内存</span></span><br></pre></td></tr></table></figure>
+<p>这段代码删除除头节点外状态为0的豌豆。如果当前节点豌豆状态为0 ，则连接前后两个节点。以此类推删除所有状态为0的节点。</p>
+<h2 id="游戏状态的判断"><a href="#游戏状态的判断" class="headerlink" title="游戏状态的判断"></a>游戏状态的判断</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">checkGameStatus</span><span class="params">()</span> &#123;<span class="comment">//1,赢，2，输</span></span><br><span class="line">	<span class="keyword">if</span> (zombielist-&gt;gx==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//僵尸移动到左边即赢得游戏</span></span><br><span class="line">	<span class="keyword">if</span> (credit &lt; <span class="number">0</span> || zombielist-&gt;hp &lt;= <span class="number">0</span> || stime&lt;<span class="number">0</span>)<span class="keyword">return</span> <span class="number">2</span>;<span class="comment">//积分，血量，时间任一没有即失败</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果这个函数返回1表示游戏胜利，返回2表示游戏失败。</p>
 
                 </div>
                 
@@ -261,14 +252,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/04/02/3.%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD/"
-                                   title="3.图片资源的加载"
+                                   href="/2024/04/09/11.%E8%83%8C%E6%99%AF%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD/"
+                                   title="11.背景的绘制以及交互功能"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">3.图片资源的加载</span>
+                                        <span class="post-nav-title-item text-ellipsis">11.背景的绘制以及交互功能</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -278,11 +269,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/03/29/1.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E%E5%92%8C%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1/"
-                                   title="1.数据结构说明和通用函数设计"
+                                   href="/2024/04/09/9.%E5%83%B5%E5%B0%B8%E4%BD%8D%E7%BD%AE%E7%9A%84%E6%94%B9%E5%8F%98%E5%92%8C%E5%90%83%E6%A4%8D%E7%89%A9%E7%9A%84%E5%88%A4%E5%AE%9A/"
+                                   title="9.僵尸位置的改变和吃植物的判定"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">1.数据结构说明和通用函数设计</span>
+                                        <span class="post-nav-title-item text-ellipsis">9.僵尸位置的改变和吃植物的判定</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

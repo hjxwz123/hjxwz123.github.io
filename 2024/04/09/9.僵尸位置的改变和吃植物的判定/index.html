@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="图片资源的加载">
+    <meta name="description" content="僵尸位置的改变和吃植物的判定">
     <meta name="author" content="HJ">
     
     <title>
         
-            3.图片资源的加载 |
+            9.僵尸位置的改变和吃植物的判定 |
         
         HJ blog
     </title>
@@ -168,7 +168,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        3.图片资源的加载
+                        9.僵尸位置的改变和吃植物的判定
                     </div>
                 
 
@@ -183,7 +183,7 @@
                             <div class="author border-box">
                                 <span class="name">HJ</span>
                                 
-                                    <span class="author-badge">Lv1</span>
+                                    <span class="author-badge">Lv2</span>
                                 
                             </div>
                             <div class="meta-info border-box">
@@ -196,12 +196,12 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2024-04-02 07:04:12</span>
+                <span class="datetime">2024-04-09 07:10:54</span>
             </span>
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Apr 02 2024 12:00:02 GMT+0000">2024-04-02 12:00:02</span>
+                <span class="datetime" data-updated="Tue Apr 09 2024 07:11:23 GMT+0000">2024-04-09 07:11:23</span>
             </span>
         
 
@@ -226,37 +226,11 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="图片资源的加载"><a href="#图片资源的加载" class="headerlink" title="图片资源的加载"></a>图片资源的加载</h1><p>首先是<code>loadPicGroup()</code>函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">loadPicGroup</span><span class="params">()</span> &#123;</span><br><span class="line">	loadimage(&amp;picgroup[<span class="number">1</span>], <span class="string">&quot;image/background2.jpg&quot;</span>);<span class="comment">//加载背景</span></span><br><span class="line">	loadimage(&amp;picgroup[<span class="number">4</span>], <span class="string">&quot;image/button.png&quot;</span>);<span class="comment">//加载大按钮</span></span><br><span class="line">	loadimage(&amp;picgroup[<span class="number">6</span>], <span class="string">&quot;image/pea.Png&quot;</span>);<span class="comment">//豌豆子弹</span></span><br><span class="line">	loadimage(&amp;picgroup[<span class="number">9</span>], <span class="string">&quot;image/pause.png&quot;</span>);<span class="comment">//暂停界面</span></span><br><span class="line">	loadimage(&amp;picgroup[<span class="number">7</span>], <span class="string">&quot;image/exp.png&quot;</span>);<span class="comment">//爆炸</span></span><br><span class="line"></span><br><span class="line">	loadImages(<span class="string">&quot;sunflower&quot;</span>, <span class="string">&quot;frame_&quot;</span>, <span class="number">17</span>, sunflowerz);</span><br><span class="line">	loadImages(<span class="string">&quot;peashooter&quot;</span>, <span class="string">&quot;frame_&quot;</span>, <span class="number">12</span>, peashooterz);</span><br><span class="line">	loadImages(<span class="string">&quot;zombie/walk&quot;</span>, <span class="string">&quot;frame_&quot;</span>, <span class="number">21</span>, zombiez);</span><br><span class="line">	loadImages(<span class="string">&quot;zombie/attack&quot;</span>, <span class="string">&quot;frame_&quot;</span>, <span class="number">20</span>, attackz);</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中<code>loadimage</code>是easyx库的函数，可以从图片文件获取图像。原型如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">loadimage</span><span class="params">(</span></span><br><span class="line"><span class="params">	IMAGE* pDstImg,			<span class="comment">// 保存图像的 IMAGE 对象指针</span></span></span><br><span class="line"><span class="params">	LPCTSTR pImgFile,		<span class="comment">// 图片文件名</span></span></span><br><span class="line"><span class="params">	<span class="type">int</span> nWidth = <span class="number">0</span>,			<span class="comment">// 图片的拉伸宽度</span></span></span><br><span class="line"><span class="params">	<span class="type">int</span> nHeight = <span class="number">0</span>,		<span class="comment">// 图片的拉伸高度</span></span></span><br><span class="line"><span class="params">	<span class="type">bool</span> bResize = <span class="literal">false</span>	<span class="comment">// 是否调整 IMAGE 的大小以适应图片</span></span></span><br><span class="line"><span class="params">)</span>;</span><br></pre></td></tr></table></figure>
-<p>在这里我简要说明一下这个函数：<br><code>pDstImg</code>为保存图像的 <code>IMAGE</code>对象指针。如果为 <code>NULL</code>，表示图片将读取至绘图窗口。<br><code>pImgFile</code>为图片文件名，这里填写文件的相对路径即可。</p>
-<p><code>nWidth</code>为图片的拉伸宽度。加载图片后，会拉伸至该宽度。默认为 0，表示使用原图的宽度。<br><code>nHeight</code>为图片的拉伸高度。加载图片后，会拉伸至该高度。默认为 0，表示使用原图的高度。<br><code>bResize</code>是否调整 IMAGE 的大小以适应图片，默认为false。<br><br></p>
-<h3 id="例如"><a href="#例如" class="headerlink" title="例如"></a>例如</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadimage(&amp;picgroup[<span class="number">1</span>], <span class="string">&quot;image/background2.jpg&quot;</span>);</span><br></pre></td></tr></table></figure>
-<p>表示将路径为image&#x2F;background2.jpg的图片加载到<code>picgroup[1]</code>中。</p>
-<br>
-在加载植物僵尸动画的时候，可能会加载很多张文件名类似的图片，这样如果我们一个个的使用 loadimage 函数会使得代码过于冗杂，为简化代码，我自定义了一个函数，用户批量加载图片。
-
-<h2 id="函数解析"><a href="#函数解析" class="headerlink" title="函数解析"></a>函数解析</h2><p>下面是我自定义的<code>loadImages</code>函数，这个函数的功能是根据给定的文件夹名称、文件格式和数量，加载特定格式的图像文件到一个 <code>IMAGE</code> 类型的数组中。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">loadImages</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* folder, <span class="type">const</span> <span class="type">char</span>* format, <span class="type">int</span> last, IMAGE* images)</span> &#123;</span><br><span class="line">	<span class="type">char</span> path[<span class="number">50</span>];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= last; i++) &#123;</span><br><span class="line">		<span class="built_in">sprintf</span>(path, <span class="string">&quot;image/%s/%s%d.png&quot;</span>, folder, format, i);</span><br><span class="line">		loadimage(&amp;images[i], path);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这段代码的目的是从指定文件夹中加载一系列图像文件，并将它们存储在提供的 <code>IMAGE</code> 类型数组中。下面是对代码每行的解释，以及函数的功能、参数和返回值的意义。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">loadImages</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* folder, <span class="type">const</span> <span class="type">char</span>* format, <span class="type">int</span> last, IMAGE* images)</span> &#123;</span><br></pre></td></tr></table></figure>
-<p>这一行定义了一个名为 <code>loadImages</code> 的函数，它没有返回值(<code>void</code>)。这个函数接收四个参数：</p>
-<ul>
-<li><code>const char* folder</code>：一个指向字符数组（字符串）的指针，指定了图像文件所在的文件夹名称。</li>
-<li><code>const char* format</code>：一个指向字符数组（字符串）的指针，用于指定文件名中除了编号之外的固定格式部分。</li>
-<li><code>int last</code>：一个整型变量，指定了<em><strong>需要加载图像的最后一张编号</strong></em>(图片编号从0开始，这个不是图片张数)。</li>
-<li><code>IMAGE* images</code>：一个指向 <code>IMAGE</code> 类型数组的指针，用于存储加载的图像数据。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> path[<span class="number">50</span>];</span><br></pre></td></tr></table></figure>
-<p>这行代码声明了一个名为 <code>path</code> 的字符数组，长度为 50 个字符。它用于存储构建的文件路径字符串。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= last; i++) &#123;</span><br></pre></td></tr></table></figure>
-<p>这行代码开始了一个 <code>for</code> 循环，循环变量 <code>i</code> 从 0 开始，直到等于 <code>last</code>。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sprintf</span>(path, <span class="string">&quot;image/%s/%s%d.png&quot;</span>, folder, format, i);</span><br></pre></td></tr></table></figure>
-<p>这行代码使用 <code>sprintf</code> 函数，根据 <code>folder</code>、<code>format</code> 和循环变量 <code>i</code> 的值，格式化生成一个字符串，并将其存储在 <code>path</code> 数组中。字符串格式为 <code>&quot;image/%s/%s%d.png&quot;</code>，其中 <code>%s</code> 和 <code>%d</code> 分别是字符串和整数的占位符。</p>
-<p>例如：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadImages(<span class="string">&quot;zombie/attack&quot;</span>, <span class="string">&quot;frame_&quot;</span>, <span class="number">20</span>, attackz);</span><br></pre></td></tr></table></figure>
-<p>表示在运行路径存在zombie&#x2F;attack的文件夹，里面存有连续图片，图片名为<code>frame_xx.png</code>,这里的xx表示从0到20的连续数字，共21张图片，将这些照片加载到<code>attack</code>变量中</p>
+                    <h1 id="9-僵尸位置的改变和吃植物的判定"><a href="#9-僵尸位置的改变和吃植物的判定" class="headerlink" title="9.僵尸位置的改变和吃植物的判定"></a>9.僵尸位置的改变和吃植物的判定</h1><h2 id="位置检测"><a href="#位置检测" class="headerlink" title="位置检测"></a>位置检测</h2><p>首先检测僵尸的位置：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">changeZombie</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (zb[zombielist-&gt;gx - <span class="number">1</span>][zombielist-&gt;gy - <span class="number">1</span>] &gt; <span class="number">0</span> &amp;&amp; zombielist-&gt;gx != <span class="number">0</span> &amp;&amp; zombielist-&gt;status == <span class="number">1</span>) &#123;</span><br><span class="line">		zombielist-&gt;status = <span class="number">2</span>;<span class="comment">//吃</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		zombielist-&gt;gx = (zombielist-&gt;x &gt;= <span class="number">590</span>) ? <span class="number">9</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">503</span>) ? <span class="number">8</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">432</span>) ? <span class="number">7</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">351</span>) ? <span class="number">6</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">271</span>) ? <span class="number">5</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">185</span>) ? <span class="number">4</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">101</span>) ? <span class="number">3</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;=  <span class="number">30</span>) ? <span class="number">2</span> :</span><br><span class="line">        (zombielist-&gt;x &gt;= <span class="number">-59</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果僵尸所在的格子有植物，并且僵尸当前格子不为0，并且僵尸状态为走路（1），那么将僵尸状态改为2（吃植物），否则判断僵尸的位置，并计算出当前僵尸所在的x单元格。如果僵尸位置到最左边，僵尸所在单元格设置为0.</p>
+<h2 id="吃植物判定"><a href="#吃植物判定" class="headerlink" title="吃植物判定"></a>吃植物判定</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">zombieEatPlant</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(zombielist-&gt;status==<span class="number">2</span>)&#123;</span><br><span class="line">		<span class="type">int</span> position = <span class="number">5</span> * (zombielist-&gt;gx - <span class="number">1</span>) + zombielist-&gt;gy;<span class="comment">//位置</span></span><br><span class="line">		<span class="type">int</span> currentCell = zb[zombielist-&gt;gx - <span class="number">1</span>][zombielist-&gt;gy - <span class="number">1</span>];<span class="comment">//当前格子的植物</span></span><br><span class="line">		<span class="comment">// 如果当前单元格有向日葵</span></span><br><span class="line">		newplant[position - <span class="number">1</span>].hp -= zombielist-&gt;zombieattack;</span><br><span class="line">		<span class="keyword">if</span> (newplant[position - <span class="number">1</span>].hp &lt;= <span class="number">0</span>) &#123;<span class="comment">//如果血量小于0</span></span><br><span class="line">			zb[zombielist-&gt;gx - <span class="number">1</span>][zombielist-&gt;gy - <span class="number">1</span>] = <span class="number">0</span>;<span class="comment">//将当前格子的植物设为0</span></span><br><span class="line">			zombielist-&gt;status = <span class="number">1</span>;<span class="comment">//改变僵尸的状态为走路</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (currentCell == <span class="number">1</span>) &#123;</span><br><span class="line">			stime += <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 如果当前单元格有豌豆射手</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (currentCell == <span class="number">2</span>) &#123;</span><br><span class="line">			credit++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// 如果当前单元格为空</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (currentCell &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">			zombielist-&gt;status = <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本段代码的基本逻辑是，如果当前僵尸状态为2，则当前格子植物血量减少，如果血量小于0，则将植物的状态设置为0，将僵尸的状态改为1（走路状态）。如果当前单元格是豌豆射手则增加积分，如果是向日葵则增加时间。</p>
 
                 </div>
                 
@@ -278,14 +252,14 @@
                             <div class="prev-post">
                                 <a class="prev"
                                    rel="prev"
-                                   href="/2024/04/02/4.%E7%99%BB%E5%BD%95%E9%A1%B5%E5%8F%8A%E6%9C%89%E5%85%B3%E5%8A%9F%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1/"
-                                   title="4.登录页及有关功能的设计"
+                                   href="/2024/04/09/10.%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E5%92%8C%E6%B8%B8%E6%88%8F%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E6%96%AD/"
+                                   title="10.内存释放和游戏状态的判断"
                                 >
                                     <span class="left arrow-icon flex-center">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">4.登录页及有关功能的设计</span>
+                                        <span class="post-nav-title-item text-ellipsis">10.内存释放和游戏状态的判断</span>
                                         <span class="post-nav-item">上一篇</span>
                                     </span>
                                 </a>
@@ -295,11 +269,11 @@
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2024/04/02/2.%E4%B8%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%AE%BE%E8%AE%A1/"
-                                   title="2.主函数的设计"
+                                   href="/2024/04/09/8.%E8%B1%8C%E8%B1%86%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B0%84%E6%92%9E%E5%87%BB%E7%9A%84%E5%88%A4%E5%AE%9A/"
+                                   title="8.豌豆绘制以及发射、撞击的判定"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">2.主函数的设计</span>
+                                        <span class="post-nav-title-item text-ellipsis">8.豌豆绘制以及发射、撞击的判定</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">

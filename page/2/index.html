@@ -78,7 +78,7 @@
                     
                         
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/"
                             >
                                 
@@ -123,7 +123,7 @@
             
                 
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/"
                     >首页</a>
                 </li>
@@ -168,15 +168,16 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/14.%E6%9C%80%E5%90%8E/">
-                            14.最后
+                        <a href="/2024/04/02/5.%E7%99%BB%E5%BD%95%E9%A1%B5%E5%8F%8A%E6%9C%89%E5%85%B3%E5%8A%9F%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                            5.登录页及有关功能的设计
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            最后由于文章编写时间较为紧急，难免有错误和描述不严谨的地方，所以在此我放上整个代码和源码文件供参考。因为代码为简化版本，本人简化较为仓促，所以以下代码没有经过严格测试，仅供参考。
-12345678910111213141516171819202122...
+                            4.登录页的制作为了主函数的简洁，我将登录模块直接自定义为lonIn函数，再给出代码前，需要补充两个知识点：
+
+1.由于easyx本身库的限制，我们绘制在界面上的图片或者图形不可以删除，所以如果需要实现画面上某一组件的改变，需要重新绘制整个界面的所有...
                         
                     </div>
 
@@ -187,8 +188,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 08:32:35 GMT+0000"
-                >2024-04-09 08:32:35</span>
+                                                                                data-updated="Tue Apr 09 2024 08:32:14 GMT+0000"
+                >2024-04-09 08:32:14</span>
             </span>
         
 
@@ -205,7 +206,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/09/14.%E6%9C%80%E5%90%8E/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2024/04/02/5.%E7%99%BB%E5%BD%95%E9%A1%B5%E5%8F%8A%E6%9C%89%E5%85%B3%E5%8A%9F%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -219,14 +220,15 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/13.%E6%B8%B8%E6%88%8F%E7%9A%84%E6%9C%80%E5%90%8E%E5%AE%9E%E7%8E%B0/">
-                            13.游戏的最后实现
+                        <a href="/2024/04/02/4.%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD/">
+                            4.图片资源的加载
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            13.游戏的最后实现速度的控制我们在前面说过，若是想实现动画效果必须使用while(1)循环（以下简称为主循环）绘制整个画布。但是这样循环过快，会使得植物的摇摆动画和僵尸动画速度过快。如果我们使用在每次循环后使用Sleep()函数设置延时，那么会使得...
+                            图片资源的加载首先是loadPicGroup()函数
+12345678910111213void loadPicGroup() &#123;	loadimage(&amp;picgroup[1], &quot;image/background2.jp...
                         
                     </div>
 
@@ -237,8 +239,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 08:20:51 GMT+0000"
-                >2024-04-09 08:20:51</span>
+                                                                                data-updated="Tue Apr 09 2024 08:32:04 GMT+0000"
+                >2024-04-09 08:32:04</span>
             </span>
         
 
@@ -255,7 +257,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/09/13.%E6%B8%B8%E6%88%8F%E7%9A%84%E6%9C%80%E5%90%8E%E5%AE%9E%E7%8E%B0/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2024/04/02/4.%E5%9B%BE%E7%89%87%E8%B5%84%E6%BA%90%E7%9A%84%E5%8A%A0%E8%BD%BD/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -269,15 +271,15 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/12.%E6%AF%94%E8%BE%83%E7%A7%AF%E5%88%86%E5%92%8C%E5%86%99%E5%85%A5/">
-                            12.积分的比较和写入
+                        <a href="/2024/04/02/3.%E4%B8%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%AE%BE%E8%AE%A1/">
+                            3.主函数的设计
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            12.积分的比较和写入读取最高积分读取外部文件的内容，该文件保存了最高积分：
-1234567891011int getScore() &#123;	int fileNumber = 0;	FILE* file = fopen(&quot;score....
+                            主函数的设计先贴上主函数的完整代码
+1234567891011int main() &#123;	initgraph(WIN_WEIDTH, WIN_HEIGHT);	loadPicGroup();	logIn();	zombielist = cre...
                         
                     </div>
 
@@ -288,8 +290,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 07:58:44 GMT+0000"
-                >2024-04-09 07:58:44</span>
+                                                                                data-updated="Tue Apr 09 2024 08:31:58 GMT+0000"
+                >2024-04-09 08:31:58</span>
             </span>
         
 
@@ -306,7 +308,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/09/12.%E6%AF%94%E8%BE%83%E7%A7%AF%E5%88%86%E5%92%8C%E5%86%99%E5%85%A5/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2024/04/02/3.%E4%B8%BB%E5%87%BD%E6%95%B0%E7%9A%84%E8%AE%BE%E8%AE%A1/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -320,14 +322,16 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/11.%E8%83%8C%E6%99%AF%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD/">
-                            11.背景的绘制以及交互功能
+                        <a href="/2024/03/29/2.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E%E5%92%8C%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1/">
+                            2.数据结构说明和通用函数设计
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            11.背景的绘制以及交互功能背景的绘制123456789101112131415161718192021222324252627282930void putMainBk() &#123;	char wstr[20];				//当前积分	char s...
+                            开始在开始之前，我先放上我的数据结构设计以及通用函数的定义，在将来方便查找。每个内容我都有注释，当然，如果暂时不知道什么意思没有关系，在以后的的文章中我会在涉及到的地方进行详细介绍
+数据设计常量设计首先定义常量数据
+123456789101112#d...
                         
                     </div>
 
@@ -338,8 +342,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 07:47:25 GMT+0000"
-                >2024-04-09 07:47:25</span>
+                                                                                data-updated="Tue Apr 09 2024 08:31:46 GMT+0000"
+                >2024-04-09 08:31:46</span>
             </span>
         
 
@@ -356,7 +360,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/09/11.%E8%83%8C%E6%99%AF%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2024/03/29/2.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E%E5%92%8C%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -370,15 +374,14 @@
                 <div class="home-post-item-bottom border-box">
                     
                     <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/10.%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E5%92%8C%E6%B8%B8%E6%88%8F%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E6%96%AD/">
-                            10.内存释放和游戏状态的判断
+                        <a href="/2024/04/02/1.%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/">
+                            1.写在前面
                         </a>
                     </h3>
 
                     <div class="home-post-content keep-markdown-body">
                         
-                            10.内存释放和游戏状态的判断内存释放因为豌豆是链表，所以我们需要及时释放内存，避免过高内存占用
-12345678910111213141516171819void deletePeaAfterNode(peas* head) &#123;//删除已...
+                            写在前面本项目基于easyx库，对于该库的安装方法请移步官网，官网。此外，对于一些基础功能，例如：消息处理（包括鼠标，键盘消息等）功能我也不再在文章中具体阐述，若有不清楚可以移步消息处理进行学习。由于本人能力有限，代码难免有不足或者bug，若有发现敬...
                         
                     </div>
 
@@ -389,8 +392,8 @@
         
             <span class="meta-info-item border-box">
                 <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 08:12:06 GMT+0000"
-                >2024-04-09 08:12:06</span>
+                                                                                data-updated="Tue Apr 09 2024 08:31:35 GMT+0000"
+                >2024-04-09 08:31:35</span>
             </span>
         
 
@@ -407,211 +410,7 @@
     </div>
 
     
-        <a class="home-read-more" href="/2024/04/09/10.%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E5%92%8C%E6%B8%B8%E6%88%8F%E7%8A%B6%E6%80%81%E7%9A%84%E5%88%A4%E6%96%AD/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/9.%E5%83%B5%E5%B0%B8%E4%BD%8D%E7%BD%AE%E7%9A%84%E6%94%B9%E5%8F%98%E5%92%8C%E5%90%83%E6%A4%8D%E7%89%A9%E7%9A%84%E5%88%A4%E5%AE%9A/">
-                            9.僵尸位置的改变和吃植物的判定
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            9.僵尸位置的改变和吃植物的判定位置检测首先检测僵尸的位置：
-12345678910111213141516void changeZombie() &#123;	if (zb[zombielist-&gt;gx - 1][zombielist-&gt...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 07:11:23 GMT+0000"
-                >2024-04-09 07:11:23</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/09/9.%E5%83%B5%E5%B0%B8%E4%BD%8D%E7%BD%AE%E7%9A%84%E6%94%B9%E5%8F%98%E5%92%8C%E5%90%83%E6%A4%8D%E7%89%A9%E7%9A%84%E5%88%A4%E5%AE%9A/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/8.%E8%B1%8C%E8%B1%86%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B0%84%E6%92%9E%E5%87%BB%E7%9A%84%E5%88%A4%E5%AE%9A/">
-                            8.豌豆绘制以及发射、撞击的判定
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            8.豌豆绘制以及发射、撞击的判定豌豆发射的判定首先是豌豆发射的判定，这个的方法有很多，这里介绍我的方法。首先遍历场上所有植物，如果当前植物是豌豆射手且僵尸在当前行且僵尸位于豌豆射手前面则发射豌豆。
-123456789void toShoot() &#...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 07:20:02 GMT+0000"
-                >2024-04-09 07:20:02</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/09/8.%E8%B1%8C%E8%B1%86%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E5%8F%91%E5%B0%84%E6%92%9E%E5%87%BB%E7%9A%84%E5%88%A4%E5%AE%9A/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/09/7.%E6%A4%8D%E7%89%A9%E4%B8%8E%E5%83%B5%E5%B0%B8%E7%9A%84%E5%8A%A8%E7%94%BB%E5%8F%8A%E7%BB%98%E5%88%B6/">
-                            7.植物与僵尸的动画及绘制
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            7.植物和僵尸图片的绘制及动画植物动画这里的关键点是动画的实现。
-12345678910111213void drawPlant() &#123;	for (int i = 0; i &lt; 16; i++) &#123;		if (zb[newp...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 09 2024 07:18:51 GMT+0000"
-                >2024-04-09 07:18:51</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/09/7.%E6%A4%8D%E7%89%A9%E4%B8%8E%E5%83%B5%E5%B0%B8%E7%9A%84%E5%8A%A8%E7%94%BB%E5%8F%8A%E7%BB%98%E5%88%B6/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
-    
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-post-item">
-
-                
-
-                <div class="home-post-item-bottom border-box">
-                    
-                    <h3 class="home-post-title border-box">
-                        <a href="/2024/04/02/6.%E6%B8%B8%E6%88%8F%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87/">
-                            6.游戏前的准备
-                        </a>
-                    </h3>
-
-                    <div class="home-post-content keep-markdown-body">
-                        
-                            6.游戏前的准备以下是主函数代码
-123456789101112131415int main() &#123;	initgraph(WIN_WEIDTH, WIN_HEIGHT);	loadPicGroup();	logIn();//以上内容前面已经...
-                        
-                    </div>
-
-                    
-
-<div class="post-meta-info-container border-box home">
-    <div class="post-meta-info border-box">
-        
-            <span class="meta-info-item border-box">
-                <i class="icon fa-solid fa-history"></i>&nbsp;<span class="home-post-history"
-                                                                                data-updated="Tue Apr 02 2024 12:57:53 GMT+0000"
-                >2024-04-02 12:57:53</span>
-            </span>
-        
-
-        
-
-        
-
-        
-
-        
-        
-        
-        
-    </div>
-
-    
-        <a class="home-read-more" href="/2024/04/02/6.%E6%B8%B8%E6%88%8F%E5%89%8D%E7%9A%84%E5%87%86%E5%A4%87/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
+        <a class="home-read-more" href="/2024/04/02/1.%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2/">阅读全文&nbsp;<i class="icon fas fa-angle-right"></i></a>
     
 </div>
 
@@ -621,7 +420,7 @@
     </ul>
     
     <div class="paginator border-box flex-center">
-        <div class="btn-wrap">
+        <div class="btn-wrap allowed">
             <a class="jump-btn"
                href="/"
             ><i class="fa-solid fa-chevron-left"></i></a>
@@ -631,16 +430,16 @@
         <div class="page-number-box border-box flex-center">
             <input class="page-number-input border-box base-color-size"
                    type="number"
-                   value="1"
+                   value="2"
                    min="1"
                    max="2"
             ><span class="delimiter base-color-size">/</span><span class="base-color-size">2</span>
         </div>
 
 
-        <div class="btn-wrap allowed">
+        <div class="btn-wrap">
             <a class="jump-btn"
-               href="/page/2/"
+               href="/"
             ><i class="fa-solid fa-chevron-right"></i></a>
         </div>
     </div>

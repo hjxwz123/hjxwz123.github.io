@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="Hexo Theme Keep">
-    <meta name="description" content="Hexo Theme Keep">
+    <meta name="description" content="积分的比较和写入">
     <meta name="author" content="HJ">
     
     <title>
         
-            归档: 2024/3 |
+            12.积分的比较和写入 |
         
         HJ blog
     </title>
@@ -90,7 +90,7 @@
                     
                         
                         <li class="menu-item">
-                            <a class="active"
+                            <a class=""
                                href="/archives"
                             >
                                 
@@ -132,7 +132,7 @@
             
                 
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
+                    <a class=""
                        href="/archives"
                     >归档</a>
                 </li>
@@ -159,36 +159,147 @@
             <div class="main-content border-box">
                 
 
-                    <div class="fade-in-down-animation">
-    <div class="archives-container">
-        <div class="archives-timeline border-box">
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
             
-<div class="archive-list-container border-box">
-    
-        <section class="archive-item border-box">
-            <div class="archive-item-header border-box">
-                <span class="archive-year">2024</span>
-            </div>
-            <ul class="archive-item-body border-box">
+
+            <div class="post-content-bottom border-box">
                 
-                    <li class="post-item border-box">
-                        <span class="post-date border-box">03-29</span>
-                        <a class="post-title border-box text-ellipsis"
-                           href="/2024/03/29/2.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E8%AF%B4%E6%98%8E%E5%92%8C%E9%80%9A%E7%94%A8%E5%87%BD%E6%95%B0%E8%AE%BE%E8%AE%A1/"
-                        >2.数据结构说明和通用函数设计</a>
-                    </li>
+                    <div class="post-title">
+                        12.积分的比较和写入
+                    </div>
                 
-            </ul>
-        </section>
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/avatar.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">HJ</span>
+                                
+                                    <span class="author-badge">Lv2</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
+        
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2024-04-09 07:58:22</span>
+            </span>
+
+            <span class="meta-info-item post-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="datetime" data-updated="Tue Apr 09 2024 07:58:44 GMT+0000">2024-04-09 07:58:44</span>
+            </span>
+        
+
+        
+
+        
+
+        
+        
+        
+        
+    </div>
+
     
 </div>
 
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body">
+                    
+
+                    <h1 id="12-积分的比较和写入"><a href="#12-积分的比较和写入" class="headerlink" title="12.积分的比较和写入"></a>12.积分的比较和写入</h1><h2 id="读取最高积分"><a href="#读取最高积分" class="headerlink" title="读取最高积分"></a>读取最高积分</h2><p>读取外部文件的内容，该文件保存了最高积分：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">getScore</span><span class="params">()</span> &#123;</span><br><span class="line">	<span class="type">int</span> fileNumber = <span class="number">0</span>;</span><br><span class="line">	FILE* file = fopen(<span class="string">&quot;score.bin&quot;</span>, <span class="string">&quot;rb&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span> (file != <span class="literal">NULL</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span> (fread(&amp;fileNumber, <span class="keyword">sizeof</span>(<span class="type">int</span>), <span class="number">1</span>, file) != <span class="number">1</span>) &#123;</span><br><span class="line">			fileNumber = <span class="number">0</span>;<span class="comment">//如果读取失败设为0</span></span><br><span class="line">		&#125;</span><br><span class="line">		fclose(file);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> fileNumber;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果读取失败重置最高分为0.然后返回最高积分。</p>
+<h2 id="比较积分"><a href="#比较积分" class="headerlink" title="比较积分"></a>比较积分</h2><p>通过函数实现，其中<code>int Userscore</code>参数表示需要比较的积分。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">compearScore</span><span class="params">(<span class="type">int</span> Userscore)</span> &#123;</span><br><span class="line">	<span class="type">int</span> fileNumber = getScore();</span><br><span class="line">	<span class="keyword">if</span> (Userscore &gt; fileNumber) &#123;</span><br><span class="line">		FILE* file = fopen(<span class="string">&quot;score.bin&quot;</span>, <span class="string">&quot;wb&quot;</span>);</span><br><span class="line">		<span class="keyword">if</span> (file != <span class="literal">NULL</span>) &#123;</span><br><span class="line">			fwrite(&amp;Userscore, <span class="keyword">sizeof</span>(<span class="type">int</span>), <span class="number">1</span>, file); <span class="comment">// 将数字写入文件</span></span><br><span class="line">			fclose(file);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先读取最高分。如果需要比较的积分大于最高积分，将需要比较的积分写入成为最高积分。</p>
+
+                </div>
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2024/04/09/13.%E6%B8%B8%E6%88%8F%E7%9A%84%E6%9C%80%E5%90%8E%E5%AE%9E%E7%8E%B0/"
+                                   title="13.游戏的最后实现"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">13.游戏的最后实现</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2024/04/09/11.%E8%83%8C%E6%99%AF%E7%9A%84%E7%BB%98%E5%88%B6%E4%BB%A5%E5%8F%8A%E4%BA%A4%E4%BA%92%E5%8A%9F%E8%83%BD/"
+                                   title="11.背景的绘制以及交互功能"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">11.背景的绘制以及交互功能</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
         </div>
+
+        
     </div>
-    
-
-
-
 </div>
 
 
@@ -231,6 +342,24 @@
     </div>
 
     <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
     
 
     <!-- side tools -->
@@ -314,6 +443,20 @@
 
 
 <div class="">
+    
+        <!-- post-helper -->
+        
+<script src="/js/post/post-helper.js"></script>
+
+
+        <!-- toc -->
+        
+
+        <!-- copyright-info -->
+        
+
+        <!-- share -->
+        
     
 
     <!-- categories page -->
