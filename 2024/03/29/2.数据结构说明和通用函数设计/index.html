@@ -201,7 +201,7 @@
 
             <span class="meta-info-item post-update-date">
                 <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                <span class="datetime" data-updated="Tue Apr 09 2024 08:31:46 GMT+0000">2024-04-09 08:31:46</span>
+                <span class="datetime" data-updated="Tue Apr 09 2024 08:50:12 GMT+0000">2024-04-09 08:50:12</span>
             </span>
         
 
@@ -226,7 +226,7 @@
                 <div class="post-content keep-markdown-body">
                     
 
-                    <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>在开始之前，我先放上我的数据结构设计以及通用函数的定义，在将来方便查找。每个内容我都有注释，当然，如果暂时不知道什么意思没有关系，在以后的的文章中我会在涉及到的地方进行详细介绍</p>
+                    <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>在开始之前，我先放上我的数据结构设计以及通用函数的定义，在将来方便查找。每个内容我都有注释，当然，如果暂时不知道什么意思没有关系，在以后的的文章中我会在涉及到的地方进行介绍.<br><br><br>此外，我们还要做一些visual studio的设置：<br>1.点击菜单栏的项目-&gt;属性-&gt;高级-&gt;字符集，将字符集改为<em><strong>使用多字节字符集</strong></em>；<br>2.项目-&gt;属性-&gt;C&#x2F;C++-&gt;SDL检查，改为否。</p>
 <h1 id="数据设计"><a href="#数据设计" class="headerlink" title="数据设计"></a>数据设计</h1><h2 id="常量设计"><a href="#常量设计" class="headerlink" title="常量设计"></a>常量设计</h2><p>首先定义常量数据</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_INPUT_LENGTH 12	<span class="comment">//用户名密码最大输入长度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_HEIGHT 39	<span class="comment">//按钮高度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BUTTON_WEIDTH 166	<span class="comment">//按钮宽度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WIN_WEIDTH 800		<span class="comment">//窗口高度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> WIN_HEIGHT 600		<span class="comment">//窗口宽度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cur_Height 100		<span class="comment">//草坪高度					</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cur_Width 81		<span class="comment">//草坪宽度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> Pea_offset 90		<span class="comment">//豌豆发射x坐标到单元格左边的长度</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cur_x 37		<span class="comment">//背景左偏移					</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> cur_y 84		<span class="comment">//背景上偏移</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> zombiepngedge 64	<span class="comment">//僵尸图片左空白</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> zombiewidth 78		<span class="comment">//僵尸宽度</span></span></span><br></pre></td></tr></table></figure>
 <p>以上是本程序设计所需的常量定义</p>
